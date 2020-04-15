@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="526" id="527"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="526" customClass="CameraControlAppDelegate">
+            <connections>
+                <outlet property="autoExposureCheckBox" destination="500" id="529"/>
+                <outlet property="autoWhiteBalanceCheckBox" destination="506" id="531"/>
+                <outlet property="cameraDropDown" destination="Lqt-Aq-s3W" id="o8N-1B-yb9"/>
+                <outlet property="cameraMenu" destination="plS-B5-uXK" id="yrW-8a-OiY"/>
+                <outlet property="cameraPopupButton" destination="uyu-ST-VB5" id="zC8-gK-GfZ"/>
+                <outlet property="captureView" destination="488" id="528"/>
+                <outlet property="exposureSlider" destination="502" id="530"/>
+                <outlet property="gainSlider" destination="514" id="533"/>
+                <outlet property="whiteBalanceSlider" destination="508" id="532"/>
+            </connections>
+        </customObject>
+        <menu title="AMainMenu" systemMenu="main" id="29" userLabel="MainMenu">
+            <items>
+                <menuItem title="CameraControl" id="56">
+                    <menu key="submenu" title="CameraControl" systemMenu="apple" id="57">
+                        <items>
+                            <menuItem title="About CameraControl" id="58">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="236">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Preferences…" keyEquivalent="," id="129" userLabel="121"/>
+                            <menuItem isSeparatorItem="YES" id="143">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Services" id="131">
+                                <menu key="submenu" title="Services" systemMenu="services" id="130"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="144">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Hide CameraControl" keyEquivalent="h" id="134">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="367"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="145">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="368"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="150">
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="370"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="149">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Quit CameraControl" keyEquivalent="q" id="136" userLabel="1111">
+                                <connections>
+                                    <action selector="terminate:" target="-3" id="449"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="19">
+                    <menu key="submenu" title="Window" systemMenu="window" id="24">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="23">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="37"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Zoom" id="239">
+                                <connections>
+                                    <action selector="performZoom:" target="-1" id="240"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="92">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Bring All to Front" id="5">
+                                <connections>
+                                    <action selector="arrangeInFront:" target="-1" id="39"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="103" userLabel="1">
+                    <menu key="submenu" title="Help" id="106" userLabel="2">
+                        <items>
+                            <menuItem title="CameraControl Help" keyEquivalent="?" id="111">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="360"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="140" y="154"/>
+        </menu>
+        <window title="CameraControl" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" id="489">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="218" y="162" width="832" height="508"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="490">
+                <rect key="frame" x="0.0" y="0.0" width="832" height="508"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <slider verticalHuggingPriority="750" id="502">
+                        <rect key="frame" x="672" y="412" width="142" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" enabled="NO" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="503">
+                            <font key="font" metaFont="user"/>
+                        </sliderCell>
+                        <connections>
+                            <action selector="sliderMoved:" target="526" id="536"/>
+                        </connections>
+                    </slider>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="504">
+                        <rect key="frame" x="671" y="437" width="143" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Exposure Time" id="505">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button imageHugsTitle="YES" id="506">
+                        <rect key="frame" x="672" y="342" width="142" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Auto White Balance" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="507">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxChanged:" target="526" id="541"/>
+                        </connections>
+                    </button>
+                    <slider verticalHuggingPriority="750" id="508">
+                        <rect key="frame" x="672" y="292" width="142" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" enabled="NO" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="509">
+                            <font key="font" metaFont="user"/>
+                        </sliderCell>
+                        <connections>
+                            <action selector="sliderMoved:" target="526" id="537"/>
+                        </connections>
+                    </slider>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="510">
+                        <rect key="frame" x="672" y="319" width="142" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="White Balance" id="511">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="512">
+                        <rect key="frame" x="671" y="231" width="143" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Gain" id="513">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider verticalHuggingPriority="750" id="514">
+                        <rect key="frame" x="672" y="204" width="142" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="515">
+                            <font key="font" metaFont="user"/>
+                        </sliderCell>
+                        <connections>
+                            <action selector="sliderMoved:" target="526" id="538"/>
+                        </connections>
+                    </slider>
+                    <button imageHugsTitle="YES" id="500">
+                        <rect key="frame" x="672" y="459" width="142" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Auto Exposure" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="501">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkBoxChanged:" target="526" id="539"/>
+                        </connections>
+                    </button>
+                    <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="uyu-ST-VB5" userLabel="Camera choice">
+                        <rect key="frame" x="248" y="481" width="145" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="lf7-Ce-VwA"/>
+                        </constraints>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingMiddle" state="on" borderStyle="border" inset="2" selectedItem="rLc-W9-ZZi" id="Lqt-Aq-s3W" userLabel="CameraDropdown" colorLabel="IBBuiltInLabel-Red">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <menu key="menu" id="plS-B5-uXK">
+                                <items>
+                                    <menuItem state="on" id="rLc-W9-ZZi">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Xr-0K-1Tf">
+                        <rect key="frame" x="187" y="487" width="55" height="16"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Camera:" id="tEM-P8-dOs">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <view id="488">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="488" firstAttribute="top" secondItem="uyu-ST-VB5" secondAttribute="bottom" constant="4" id="4FC-NT-5nj"/>
+                    <constraint firstItem="508" firstAttribute="width" secondItem="510" secondAttribute="width" id="OoV-zf-pr0"/>
+                    <constraint firstItem="uyu-ST-VB5" firstAttribute="centerX" secondItem="488" secondAttribute="centerX" id="R1s-oc-30m"/>
+                    <constraint firstItem="uyu-ST-VB5" firstAttribute="centerY" secondItem="9Xr-0K-1Tf" secondAttribute="centerY" id="jnr-q3-WGb"/>
+                    <constraint firstItem="508" firstAttribute="top" secondItem="510" secondAttribute="bottom" constant="8" id="pPT-Ou-yin"/>
+                    <constraint firstItem="488" firstAttribute="leading" secondItem="490" secondAttribute="leading" id="qnE-0v-IbE"/>
+                    <constraint firstItem="508" firstAttribute="leading" secondItem="510" secondAttribute="leading" id="sfE-ys-aRE"/>
+                    <constraint firstItem="uyu-ST-VB5" firstAttribute="leading" secondItem="9Xr-0K-1Tf" secondAttribute="trailing" constant="10" id="u54-dc-gV0"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="139" y="151"/>
+        </window>
+        <customObject id="420" customClass="NSFontManager"/>
+    </objects>
+</document>
